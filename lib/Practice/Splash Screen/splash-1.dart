@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:internship/Login/login.dart';
 import 'package:internship/Practice/Splash%20Screen/splash-2.dart';
 import 'package:internship/Practice/components/constants.dart';
 import 'package:internship/Practice/components/custom.dart';
+import 'package:internship/Practice/Screens/sign_up.dart';
+
+import '../Screens/sign-in.dart';
 
 class Splash1 extends StatefulWidget {
   const Splash1({super.key});
@@ -50,14 +54,16 @@ class _Splash1State extends State<Splash1> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SignIn()));
+                    },
                     child: Uihelper.CustomText(
                       textAlign: TextAlign.start,
                       title: "Skip",
                       FontSize: 18,
                       FontWeight: FontWeight.w600,
                       color: Colors.black,
-                      fontFamily: "fonts/Montserrat-SemiBold.ttf",
+                      fontFamily: "Montserrat-SemiBold.ttf",
                     ),
                   ),
                 ],
@@ -79,7 +85,7 @@ class _Splash1State extends State<Splash1> {
                 FontSize: 14,
                 FontWeight: FontWeight.w600,
                 color: borderColor,
-                fontFamily: "fonts/Montserrat-SemiBold.ttf",
+                fontFamily: "Montserrat-SemiBold.ttf",
               ),
               SizedBox(height: 250),
               Row(
@@ -132,7 +138,7 @@ class _Splash1State extends State<Splash1> {
                       FontSize: 18,
                       FontWeight: FontWeight.w600,
                       color: pinkColor,
-                      fontFamily: "fonts/Montserrat-SemiBold.ttf",
+                      fontFamily: "Montserrat-SemiBold.ttf",
                     ),
                   ),
                 ],

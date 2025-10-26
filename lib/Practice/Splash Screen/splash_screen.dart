@@ -6,7 +6,7 @@ import 'package:internship/Login/teacher.dart';
 import 'package:internship/Practice/Splash%20Screen/splash-1.dart';
 import 'dart:async';
 
-import 'package:internship/Practice/onBoarding1.dart';
+import 'package:internship/Practice/Screens/sign_up.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
