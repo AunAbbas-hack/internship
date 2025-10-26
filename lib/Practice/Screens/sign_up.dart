@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:internship/Practice/Screens/sign-in.dart';
+import 'package:internship/Practice/components/button.dart';
 import 'package:internship/Practice/components/custom.dart';
 
 import '../components/constants.dart';
@@ -12,12 +13,12 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
- final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
 
   final TextEditingController _passwordController = TextEditingController();
-  bool seenPassword=false;
-  bool confirmSeenPassword=false;
-  TextEditingController _confirmPasswordController=TextEditingController();
+  bool seenPassword = false;
+  bool confirmSeenPassword = false;
+  TextEditingController _confirmPasswordController = TextEditingController();
   @override
   void dispose() {
     // TODO: implement dispose
@@ -33,7 +34,7 @@ class _SignUpState extends State<SignUp> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20.0,horizontal: 30),
+            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 30),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -51,7 +52,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
                 SizedBox(height: 43),
-        
+
                 TextFormField(
                   controller: _emailController,
                   decoration: InputDecoration(
@@ -77,24 +78,26 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(height: 43),
                 TextFormField(
                   controller: _passwordController,
-                  obscureText: seenPassword?false:true,
+                  obscureText: seenPassword ? false : true,
                   decoration: InputDecoration(
                     hintText: "Password",
-                    suffixIcon:seenPassword? IconButton(onPressed: (){
-
-                      setState(() {
-                        seenPassword=false;
-                      });
-                    },
-                      icon:  Icon(
-                        Icons.visibility_off,
-                        color: textColor,
-                      ),
-                    ):IconButton(onPressed: (){
-                      setState(() {
-                        seenPassword=true;
-                      });
-                    }, icon: Icon(Icons.visibility,color: textColor,)),
+                    suffixIcon: seenPassword
+                        ? IconButton(
+                            onPressed: () {
+                              setState(() {
+                                seenPassword = false;
+                              });
+                            },
+                            icon: Icon(Icons.visibility_off_outlined, color: textColor),
+                          )
+                        : IconButton(
+                            onPressed: () {
+                              setState(() {
+                                seenPassword = true;
+                              });
+                            },
+                            icon: Icon(Icons.visibility_outlined, color: textColor),
+                          ),
                     hintStyle: TextStyle(color: textColor, fontSize: 12),
                     prefixIcon: Icon(Icons.lock, color: textColor),
                     filled: true,
@@ -116,18 +119,26 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(height: 43),
                 TextFormField(
                   controller: _confirmPasswordController,
-                  obscureText: confirmSeenPassword?true:false,
+                  obscureText: confirmSeenPassword ? true : false,
                   decoration: InputDecoration(
                     hintText: "Confirm Password",
-                    suffixIcon:confirmSeenPassword?IconButton(onPressed: (){
-                      setState(() {
-                        confirmSeenPassword=false;
-                      });
-                    }, icon: Icon(Icons.visibility_off,color: textColor,)):IconButton(onPressed: (){
-                      setState(() {
-                        confirmSeenPassword=true;
-                      });
-                    }, icon: Icon(Icons.visibility,color: textColor,)),
+                    suffixIcon: confirmSeenPassword
+                        ? IconButton(
+                            onPressed: () {
+                              setState(() {
+                                confirmSeenPassword = false;
+                              });
+                            },
+                            icon: Icon(Icons.visibility_off_outlined, color: textColor),
+                          )
+                        : IconButton(
+                            onPressed: () {
+                              setState(() {
+                                confirmSeenPassword = true;
+                              });
+                            },
+                            icon: Icon(Icons.visibility_outlined, color: textColor),
+                          ),
                     hintStyle: TextStyle(color: textColor, fontSize: 12),
                     prefixIcon: Icon(Icons.lock, color: textColor),
                     filled: true,
@@ -149,28 +160,29 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(height: 4),
                 Align(
                   alignment: Alignment.centerRight,
-                  child: Text(
-                    "Forgot Password?",
-                    style: TextStyle(color: pinkColor, fontSize: 12,fontFamily: "Montserrat-SemiBold.ttf"),
-                  ),
-                ),
-                SizedBox(height: 30),
-                Container(
-                  height: 55,
-                  decoration: BoxDecoration(
-                    color: pinkColor,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
+                  child: InkWell(
+                    onTap: () {
+                      // Navigator.push(context, MaterialPageRoute(builder: (context)=>))
+                    },
                     child: Text(
-                      "Sign Up",
+                      "Forgot Password?",
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                        color: pinkColor,
+                        fontSize: 12,
+                        fontFamily: "Montserrat-SemiBold.ttf",
                       ),
                     ),
                   ),
+                ),
+                SizedBox(height: 30),
+                Button(
+                  title: "Create Account",
+                  onPress: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignIn()),
+                    );
+                  },
                 ),
                 SizedBox(height: 50),
                 Text(
@@ -201,26 +213,34 @@ class _SignUpState extends State<SignUp> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                  Uihelper.CustomText(
-                    textAlign: TextAlign.justify,
-                    title: "Already Have An Account?",
-                    FontSize: 12,
-                    FontWeight: FontWeight.normal,
-                    color: borderColor,
-                    fontFamily: "Montserrat-SemiBold.ttf",
-                  ),
-                  TextButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SignIn()));
-                  }, child: Uihelper.CustomText(
-                    textAlign: TextAlign.justify,
-                    title: ""
-                        "Login",
-                    FontSize: 14,
-                    FontWeight: FontWeight.bold,
-                    color: pinkColor,
-                    fontFamily: "Montserrat-SemiBold.ttf",
-                  ),)
-                ],)
+                    Uihelper.CustomText(
+                      textAlign: TextAlign.justify,
+                      title: "Already Have An Account?",
+                      FontSize: 12,
+                      FontWeight: FontWeight.normal,
+                      color: borderColor,
+                      fontFamily: "Montserrat-SemiBold.ttf",
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignIn()),
+                        );
+                      },
+                      child: Uihelper.CustomText(
+                        textAlign: TextAlign.justify,
+                        title:
+                            ""
+                            "Login",
+                        FontSize: 14,
+                        FontWeight: FontWeight.bold,
+                        color: pinkColor,
+                        fontFamily: "Montserrat-SemiBold.ttf",
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),

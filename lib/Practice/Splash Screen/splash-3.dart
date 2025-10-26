@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../Screens/sign-in.dart';
 import '../components/constants.dart';
 import '../components/custom.dart';
 
@@ -25,7 +26,9 @@ class _Splash3State extends State<Splash3> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     child: RichText(
                       text: TextSpan(
                         children: [
@@ -50,7 +53,12 @@ class _Splash3State extends State<Splash3> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignIn()),
+                      );
+                    },
                     child: Uihelper.CustomText(
                       textAlign: TextAlign.start,
                       title: "Skip",
@@ -128,7 +136,12 @@ class _Splash3State extends State<Splash3> {
                     ],
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignIn()),
+                      );
+                    },
                     child: Uihelper.CustomText(
                       textAlign: TextAlign.justify,
                       title: "Get Started",

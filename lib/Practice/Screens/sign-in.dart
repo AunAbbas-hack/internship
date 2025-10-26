@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:internship/Practice/Screens/forgot-password.dart';
 import 'package:internship/Practice/Screens/sign_up.dart';
+import 'package:internship/Practice/components/button.dart';
+import 'package:internship/Practice/components/textformfield.dart';
 
 import '../components/constants.dart';
 import '../components/custom.dart';
@@ -13,7 +16,7 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final TextEditingController _emailController = TextEditingController();
-  bool seenPassword=false;
+  bool seenPassword = false;
 
   final TextEditingController _passwordController = TextEditingController();
   @override
@@ -30,7 +33,7 @@ class _SignInState extends State<SignIn> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20.0,horizontal: 30),
+            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 30),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,50 +51,34 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
                 SizedBox(height: 43),
-        
-                TextFormField(
-                  controller: _emailController,
-                  decoration: InputDecoration(
-                    hintText: "Username or Email",
-                    hintStyle: TextStyle(fontSize: 12, color: textColor),
-                    prefixIcon: Icon(Icons.person, color: textColor),
-                    filled: true,
-                    fillColor: fillColor,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: borderColor),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: borderColor, width: 2),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: borderColor, width: 2),
-                    ),
-                  ),
+                customTextformfield(
+                  Controller: _emailController,
+                  icon: Icons.person,
+                  HintText: "Username or Email",
                 ),
                 SizedBox(height: 43),
                 TextFormField(
                   controller: _passwordController,
-                  obscureText: true,
+                  obscureText: seenPassword?false:true,
                   decoration: InputDecoration(
                     hintText: "Password",
-                    suffixIcon:seenPassword? IconButton(onPressed: (){
-
-                      setState(() {
-                        seenPassword=false;
-                      });
-                    },
-                      icon:  Icon(
-                        Icons.visibility_off,
-                        color: textColor,
-                      ),
-                    ):IconButton(onPressed: (){
-                      setState(() {
-                        seenPassword=true;
-                      });
-                    }, icon: Icon(Icons.visibility,color: textColor,)),
+                    suffixIcon: seenPassword
+                        ? IconButton(
+                            onPressed: () {
+                              setState(() {
+                                seenPassword = false;
+                              });
+                            },
+                            icon: Icon(Icons.visibility_off_outlined, color: textColor),
+                          )
+                        : IconButton(
+                            onPressed: () {
+                              setState(() {
+                                seenPassword = true;
+                              });
+                            },
+                            icon: Icon(Icons.visibility_outlined, color: textColor),
+                          ),
                     hintStyle: TextStyle(color: textColor, fontSize: 12),
                     prefixIcon: Icon(Icons.lock, color: textColor),
                     filled: true,
@@ -113,29 +100,23 @@ class _SignInState extends State<SignIn> {
                 SizedBox(height: 4),
                 Align(
                   alignment: Alignment.centerRight,
-                  child: Text(
-                    "Forgot Password?",
-                    style: TextStyle(color: pinkColor, fontSize: 12),
-                  ),
-                ),
-                SizedBox(height: 30),
-                Container(
-                  height: 55,
-                  decoration: BoxDecoration(
-                    color: pinkColor,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ForgotPassword(),
+                        ),
+                      );
+                    },
                     child: Text(
-                      "Login",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      "Forgot Password?",
+                      style: TextStyle(color: pinkColor, fontSize: 12),
                     ),
                   ),
                 ),
+                SizedBox(height: 30),
+                Button(title: "Login", onPress: () {}),
                 SizedBox(height: 50),
                 Text(
                   "- OR continue with -",
@@ -162,26 +143,34 @@ class _SignInState extends State<SignIn> {
                   ],
                 ),
                 SizedBox(height: 20),
-                Row(children: [
-                  Uihelper.CustomText(
-                    textAlign: TextAlign.justify,
-                    title: "Create An Account",
-                    FontSize: 18,
-                    FontWeight: FontWeight.normal,
-                    color: borderColor,
-                    fontFamily: "Montserrat-SemiBold.ttf",
-                  ),
-                  TextButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp()));
-                  }, child: Uihelper.CustomText(
-                    textAlign: TextAlign.justify,
-                    title: "Sign Up",
-                    FontSize: 20,
-                    FontWeight: FontWeight.bold,
-                    color: pinkColor,
-                    fontFamily: "Montserrat-SemiBold.ttf",
-                  ),)
-                ],)
+                Row(
+                  children: [
+                    Uihelper.CustomText(
+                      textAlign: TextAlign.justify,
+                      title: "Create An Account",
+                      FontSize: 18,
+                      FontWeight: FontWeight.normal,
+                      color: borderColor,
+                      fontFamily: "Montserrat-SemiBold.ttf",
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignUp()),
+                        );
+                      },
+                      child: Uihelper.CustomText(
+                        textAlign: TextAlign.justify,
+                        title: "Sign Up",
+                        FontSize: 20,
+                        FontWeight: FontWeight.bold,
+                        color: pinkColor,
+                        fontFamily: "Montserrat-SemiBold.ttf",
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
