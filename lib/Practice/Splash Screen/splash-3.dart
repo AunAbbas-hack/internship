@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:internship/Practice/Screens/get_started.dart';
 
 import '../Screens/sign-in.dart';
 import '../components/constants.dart';
@@ -139,7 +140,7 @@ class _Splash3State extends State<Splash3> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SignIn()),
+                        MaterialPageRoute(builder: (context) => GetStarted()),
                       );
                     },
                     child: Uihelper.CustomText(

@@ -45,9 +45,9 @@ class _SignInState extends State<SignIn> {
                     textAlign: TextAlign.justify,
                     title: "Welcome\nBack!",
                     FontSize: 36,
-                    FontWeight: FontWeight.bold,
+                    FontWeight: FontWeight.w800,
                     color: Colors.black,
-                    fontFamily: "Montserrat-ExtraBold.ttf",
+                    fontFamily: "Montserrat",
                   ),
                 ),
                 SizedBox(height: 43),
@@ -115,7 +115,7 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 40),
                 Button(title: "Login", onPress: () {}),
                 SizedBox(height: 50),
                 Text(
@@ -144,11 +144,12 @@ class _SignInState extends State<SignIn> {
                 ),
                 SizedBox(height: 20),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Uihelper.CustomText(
                       textAlign: TextAlign.justify,
                       title: "Create An Account",
-                      FontSize: 18,
+                      FontSize: 12,
                       FontWeight: FontWeight.normal,
                       color: borderColor,
                       fontFamily: "Montserrat-SemiBold.ttf",
@@ -163,7 +164,7 @@ class _SignInState extends State<SignIn> {
                       child: Uihelper.CustomText(
                         textAlign: TextAlign.justify,
                         title: "Sign Up",
-                        FontSize: 20,
+                        FontSize: 14,
                         FontWeight: FontWeight.bold,
                         color: pinkColor,
                         fontFamily: "Montserrat-SemiBold.ttf",

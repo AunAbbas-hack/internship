@@ -159,22 +159,22 @@ class _SignUpState extends State<SignUp> {
                 ),
                 SizedBox(height: 4),
                 Align(
-                  alignment: Alignment.centerRight,
+                  alignment: Alignment.topLeft,
                   child: InkWell(
                     onTap: () {
                       // Navigator.push(context, MaterialPageRoute(builder: (context)=>))
                     },
                     child: Text(
-                      "Forgot Password?",
+                      "By clicking the Register button, you agree\nto the public offer",
                       style: TextStyle(
-                        color: pinkColor,
+                        color: borderColor,
                         fontSize: 12,
                         fontFamily: "Montserrat-SemiBold.ttf",
                       ),
                     ),
                   ),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 40),
                 Button(
                   title: "Create Account",
                   onPress: () {
